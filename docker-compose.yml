@@ -73,7 +73,7 @@ services:
     # Run the backup every 1 hour to a file called hourly-backup.sql.
     # How to restore: <https://mariadb.com/kb/en/mysqldump/#restoring>
     healthcheck:
-      test: mysqldump -uroot -p$MYSQL_ROOT_PASSWORD --all-databases --result-file="/var/lib/mysql/hourly-backup.sql || true
+      test: mysqldump -uroot -p$MYSQL_ROOT_PASSWORD --all-databases --result-file=/var/lib/mysql/hourly-backup.sql || exit 0
       interval: 1h
       timeout: 30s
       retries: 3
